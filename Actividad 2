@@ -1,0 +1,279 @@
+replication:
+  replSetName: crudSet
+
+mongod --config /path/to/mongod.conf
+
+
+mongo --port 27017
+
+
+rs.initiate(
+  {
+    _id: "crudSet",
+    members: [
+      { _id: 0, host: "ac-vcjse6e-shard-00-02.pssazhn.mongodb.net:27017" },
+      { _id: 1, host: "ac-vcjse6e-shard-00-00.pssazhn.mongodb.net:27017", priority: 0.5 },
+      { _id: 2, host: "ac-vcjse6e-shard-00-01.pssazhn.mongodb.net:27017", priority: 0.5 }
+    ]
+  }
+)
+
+
+rs.status()
+{
+  set: 'atlas-11ckqh-shard-0',
+  date: 2023-12-03T23:46:14.533Z,
+  myState: 1,
+  term: Long("40"),
+  syncSourceHost: '',
+  syncSourceId: -1,
+  heartbeatIntervalMillis: Long("2000"),
+  majorityVoteCount: 2,
+  writeMajorityCount: 2,
+  votingMembersCount: 3,
+  writableVotingMembersCount: 3,
+  optimes: {
+    lastCommittedOpTime: { ts: Timestamp({ t: 1701647174, i: 3 }), t: Long("40") },
+    lastCommittedWallTime: 2023-12-03T23:46:14.483Z,
+    readConcernMajorityOpTime: { ts: Timestamp({ t: 1701647174, i: 3 }), t: Long("40") },
+    appliedOpTime: { ts: Timestamp({ t: 1701647174, i: 3 }), t: Long("40") },
+    durableOpTime: { ts: Timestamp({ t: 1701647174, i: 3 }), t: Long("40") },
+    lastAppliedWallTime: 2023-12-03T23:46:14.483Z,
+    lastDurableWallTime: 2023-12-03T23:46:14.483Z
+  },
+  lastStableRecoveryTimestamp: Timestamp({ t: 1701647124, i: 3 }),
+  electionCandidateMetrics: {
+    lastElectionReason: 'stepUpRequestSkipDryRun',
+    lastElectionDate: 2023-11-29T16:54:00.413Z,
+    electionTerm: Long("40"),
+    lastCommittedOpTimeAtElection: { ts: Timestamp({ t: 1701276839, i: 4 }), t: Long("39") },
+    lastSeenOpTimeAtElection: { ts: Timestamp({ t: 1701276839, i: 4 }), t: Long("39") },
+    numVotesNeeded: 2,
+    priorityAtElection: 7,
+    electionTimeoutMillis: Long("5000"),
+    priorPrimaryMemberId: 1,
+    numCatchUpOps: Long("0"),
+    newTermStartDate: 2023-11-29T16:54:00.480Z,
+    wMajorityWriteAvailabilityDate: 2023-11-29T16:54:01.603Z
+  },
+  members: [
+    {
+      _id: 0,
+      name: 'ac-vcjse6e-shard-00-00.pssazhn.mongodb.net:27017',
+      health: 1,
+      state: 2,
+      stateStr: 'SECONDARY',
+      uptime: 370536,
+      optime: [Object],
+      optimeDurable: [Object],
+      optimeDate: 2023-12-03T23:46:12.000Z,
+      optimeDurableDate: 2023-12-03T23:46:12.000Z,
+      lastAppliedWallTime: 2023-12-03T23:46:14.483Z,
+      lastDurableWallTime: 2023-12-03T23:46:14.483Z,
+      lastHeartbeat: 2023-12-03T23:46:13.099Z,
+      lastHeartbeatRecv: 2023-12-03T23:46:13.877Z,
+      pingMs: Long("0"),
+      lastHeartbeatMessage: '',
+      syncSourceHost: 'ac-vcjse6e-shard-00-02.pssazhn.mongodb.net:27017',
+      syncSourceId: 2,
+      infoMessage: '',
+      configVersion: 2,
+      configTerm: 40
+    },
+    {
+      _id: 1,
+      name: 'ac-vcjse6e-shard-00-01.pssazhn.mongodb.net:27017',
+      health: 1,
+      state: 2,
+      stateStr: 'SECONDARY',
+      uptime: 370169,
+      optime: [Object],
+      optimeDurable: [Object],
+      optimeDate: 2023-12-03T23:46:13.000Z,
+      optimeDurableDate: 2023-12-03T23:46:13.000Z,
+      lastAppliedWallTime: 2023-12-03T23:46:14.483Z,
+      lastDurableWallTime: 2023-12-03T23:46:14.483Z,
+      lastHeartbeat: 2023-12-03T23:46:13.411Z,
+      lastHeartbeatRecv: 2023-12-03T23:46:14.162Z,
+      pingMs: Long("0"),
+      lastHeartbeatMessage: '',
+      syncSourceHost: 'ac-vcjse6e-shard-00-02.pssazhn.mongodb.net:27017',
+      syncSourceId: 2,
+      infoMessage: '',
+      configVersion: 2,
+      configTerm: 40
+    },
+    {
+      _id: 2,
+      name: 'ac-vcjse6e-shard-00-02.pssazhn.mongodb.net:27017',
+      health: 1,
+      state: 1,
+      stateStr: 'PRIMARY',
+      uptime: 370559,
+      optime: [Object],
+      optimeDate: 2023-12-03T23:46:14.000Z,
+      lastAppliedWallTime: 2023-12-03T23:46:14.483Z,
+      lastDurableWallTime: 2023-12-03T23:46:14.483Z,
+      syncSourceHost: '',
+      syncSourceId: -1,
+      infoMessage: '',
+      electionTime: Timestamp({ t: 1701276840, i: 1 }),
+      electionDate: 2023-11-29T16:54:00.000Z,
+      configVersion: 2,
+      configTerm: 40,
+      self: true,
+      lastHeartbeatMessage: ''
+    }
+  ],
+  ok: 1,
+  '$clusterTime': {
+    clusterTime: Timestamp({ t: 1701647174, i: 3 }),
+    signature: {
+      hash: Binary.createFromBase64("BFdUIV13FttPNlUqbob8qSLbzGs=", 0),
+      keyId: Long("7270980002600976390")
+    }
+  },
+  operationTime: Timestamp({ t: 1701647174, i: 3 })
+}
+
+
+CASO 1
+
+{
+  set: 'atlas-11ckqh-shard-0',
+  date: 2023-12-04T03:35:34.952Z,
+  myState: 1,
+  term: Long("40"),
+  syncSourceHost: '',
+  syncSourceId: -1,
+  heartbeatIntervalMillis: Long("2000"),
+  majorityVoteCount: 2,
+  writeMajorityCount: 2,
+  votingMembersCount: 3,
+  writableVotingMembersCount: 3,
+  optimes: {
+    lastCommittedOpTime: { ts: Timestamp({ t: 1701660934, i: 12 }), t: Long("40") },
+    lastCommittedWallTime: 2023-12-04T03:35:34.727Z,
+    readConcernMajorityOpTime: { ts: Timestamp({ t: 1701660934, i: 12 }), t: Long("40") },
+    appliedOpTime: { ts: Timestamp({ t: 1701660934, i: 12 }), t: Long("40") },
+    durableOpTime: { ts: Timestamp({ t: 1701660934, i: 12 }), t: Long("40") },
+    lastAppliedWallTime: 2023-12-04T03:35:34.727Z,
+    lastDurableWallTime: 2023-12-04T03:35:34.727Z
+  },
+  lastStableRecoveryTimestamp: Timestamp({ t: 1701660904, i: 2 }),
+  electionCandidateMetrics: {
+    lastElectionReason: 'stepUpRequestSkipDryRun',
+    lastElectionDate: 2023-11-29T16:54:00.413Z,
+    electionTerm: Long("40"),
+    lastCommittedOpTimeAtElection: { ts: Timestamp({ t: 1701276839, i: 4 }), t: Long("39") },
+    lastSeenOpTimeAtElection: { ts: Timestamp({ t: 1701276839, i: 4 }), t: Long("39") },
+    numVotesNeeded: 2,
+    priorityAtElection: 7,
+    electionTimeoutMillis: Long("5000"),
+    priorPrimaryMemberId: 1,
+    numCatchUpOps: Long("0"),
+    newTermStartDate: 2023-11-29T16:54:00.480Z,
+    wMajorityWriteAvailabilityDate: 2023-11-29T16:54:01.603Z
+  },
+  members: [
+    {
+      _id: 0,
+      name: 'ac-vcjse6e-shard-00-00.pssazhn.mongodb.net:27017',
+      health: 1,
+      state: 2,
+      stateStr: 'SECONDARY',
+      uptime: 384296,
+      optime: [Object],
+      optimeDurable: [Object],
+      optimeDate: 2023-12-04T03:35:33.000Z,
+      optimeDurableDate: 2023-12-04T03:35:33.000Z,
+      lastAppliedWallTime: 2023-12-04T03:35:34.727Z,
+      lastDurableWallTime: 2023-12-04T03:35:34.727Z,
+      lastHeartbeat: 2023-12-04T03:35:33.823Z,
+      lastHeartbeatRecv: 2023-12-04T03:35:34.602Z,
+      pingMs: Long("0"),
+      lastHeartbeatMessage: '',
+      syncSourceHost: 'ac-vcjse6e-shard-00-02.pssazhn.mongodb.net:27017',
+      syncSourceId: 2,
+      infoMessage: '',
+      configVersion: 2,
+      configTerm: 40
+    },
+    {
+      _id: 1,
+      name: 'ac-vcjse6e-shard-00-01.pssazhn.mongodb.net:27017',
+      health: 1,
+      state: 2,
+      stateStr: 'SECONDARY',
+      uptime: 383929,
+      optime: [Object],
+      optimeDurable: [Object],
+      optimeDate: 2023-12-04T03:35:34.000Z,
+      optimeDurableDate: 2023-12-04T03:35:34.000Z,
+      lastAppliedWallTime: 2023-12-04T03:35:34.727Z,
+      lastDurableWallTime: 2023-12-04T03:35:34.727Z,
+      lastHeartbeat: 2023-12-04T03:35:34.272Z,
+      lastHeartbeatRecv: 2023-12-04T03:35:34.693Z,
+      pingMs: Long("0"),
+      lastHeartbeatMessage: '',
+      syncSourceHost: 'ac-vcjse6e-shard-00-02.pssazhn.mongodb.net:27017',
+      syncSourceId: 2,
+      infoMessage: '',
+      configVersion: 2,
+      configTerm: 40
+    },
+    {
+      _id: 2,
+      name: 'ac-vcjse6e-shard-00-02.pssazhn.mongodb.net:27017',
+      health: 1,
+      state: 1,
+      stateStr: 'PRIMARY',
+      uptime: 384319,
+      optime: [Object],
+      optimeDate: 2023-12-04T03:35:34.000Z,
+      lastAppliedWallTime: 2023-12-04T03:35:34.727Z,
+      lastDurableWallTime: 2023-12-04T03:35:34.727Z,
+      syncSourceHost: '',
+      syncSourceId: -1,
+      infoMessage: '',
+      electionTime: Timestamp({ t: 1701276840, i: 1 }),
+      electionDate: 2023-11-29T16:54:00.000Z,
+      configVersion: 2,
+      configTerm: 40,
+      self: true,
+      lastHeartbeatMessage: ''
+    }
+  ],
+  ok: 1,
+  '$clusterTime': {
+    clusterTime: Timestamp({ t: 1701660934, i: 12 }),
+    signature: {
+      hash: Binary.createFromBase64("3VFNA7vOvKmy9x1n1sc3sKmdj7U=", 0),
+      keyId: Long("7270980002600976390")
+    }
+  },
+  operationTime: Timestamp({ t: 1701660934, i: 12 })
+}
+
+CASO 2
+
+rs.stepDown(60 , 30)
+
+# During rs.stepDown
+984329 rsSync none
+984329 ReplBatcher none
+108 WT RecordStoreThread: local.oplog.rs none
+16 conn615138 command
+16 conn615136 command
+16 conn615085 update
+16 conn615079 insert
+
+
+CASO 3
+
+rs.syncFrom()
+
+[rsSync] replSet initial sync pending
+[rsSync] replSet syncing to: ac-vcjse6e-shard-00-02.pssazhn.mongodb.net:27017
+
+

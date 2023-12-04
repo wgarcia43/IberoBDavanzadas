@@ -1,0 +1,104 @@
+use CRUD
+db.createCollection("Equipos")
+
+Equipos
+{
+  "_id": ObjectId(),
+  "nombre": "Nombre del Equipo",
+  "departamento": "Departamento del Equipo",
+  "entrenador_id": ObjectId()
+}
+
+db.createCollection("Entrenadores")
+
+Entrenadores
+{
+  "_id": ObjectId(),
+  "nombre": "Nombre del Entrenador",
+}
+
+db.createCollection("Arbitros")
+
+Arbitros
+{
+  "_id": ObjectId(),
+  "nombre": "Nombre del Árbitro",
+  "experiencia": "Experiencia del Árbitro"
+}
+
+db.createCollection("Deportistas")
+
+Deportistas:
+{
+  "_id": ObjectId(),
+  "nombre": "Nombre del Deportista",
+  "fecha_nacimiento": "YYYY-MM-DD",
+  "posicion": "Posición en el Campo",
+  "equipo_id": ObjectId()
+}
+
+db.createCollection("Partidos")
+
+Partidos
+
+{
+  "_id": ObjectId(),
+  "fecha": "YYYY-MM-DD",
+  "hora": "HH:MM",
+  "equipo_local_id": ObjectId(),
+  "equipo_visitante_id": ObjectId(),
+  "lugar": "Nombre del Lugar",
+  "arbitro_id": ObjectId(),
+  "entrenadores": [ObjectId(), ObjectId()],
+  "eventos": [
+    {
+      "minuto": 30,
+      "tipo": "Gol",
+      "equipo_id": ObjectId(),
+    },
+  ]
+}
+
+Registros
+
+Equipos
+
+{"_id":{"$oid":"655a957cea5edb60be09be1c"},"nombre":"Leones del Valle","departamento":"Valle del cauca","entrenador_id":{"$oid":"655a9697ea5edb60be0b2b05"}}
+{"_id":{"$oid":"655a957cea5edb60be09be1d"},"nombre":"Gladiadores","departamento":"Bogota","entrenador_id":{"$oid":"655a971739467e995a42cfbf"}}
+{"_id":{"$oid":"655a957cea5edb60be09be1e"},"nombre":"Paisas","departamento":"Antioquia","entrenador_id":{"$oid":"655a975d39467e995a42cfc0"}}
+{"_id":{"$oid":"655a957cea5edb60be09be1f"},"nombre":"Arrieros","departamento":"Risaralda","entrenador_id":{"$oid":"655a977f39467e995a42cfc1"}}
+{"_id":{"$oid":"655a957cea5edb60be09be20"},"nombre":"Campeones","departamento":"Santander","entrenador_id":{"$oid":"655a979a39467e995a42cfc2"}}
+
+Entrenadores
+
+{"_id":{"$oid":"655a9697ea5edb60be0b2b05"},"nombre":"Maria lopez"}
+{"_id":{"$oid":"655a9697ea5edb60be0b2b06"},"nombre":"Jorge Perez"}
+{"_id":{"$oid":"655a9697ea5edb60be0b2b07"},"nombre":"Walter Garcia"}\
+{"_id":{"$oid":"655a9697ea5edb60be0b2b08"},"nombre":"Diana Martinez"}
+{"_id":{"$oid":"655a9697ea5edb60be0b2b09"},"nombre":"Adriana Bernal"}\
+
+Arbitros
+
+{"_id":{"$oid":"655a9881ea5edb60be0dba4e"},"nombre":"Luis Suarez","experiencia":"suramericanos 2020"}
+{"_id":{"$oid":"655a9881ea5edb60be0dba4f"},"nombre":"Leonel Messi","experiencia":"juegos nacionales 2022"}
+{"_id":{"$oid":"655a9881ea5edb60be0dba50"},"nombre":"Roman Riquelme","experiencia":"liga bogotana de rugby"}
+
+Deportistas
+
+{"_id":{"$oid":"655a99fbea5edb60be0fa4ac"},"nombre":"Samuel Garcia","fecha_nacimiento":"2000-05-15","posicion":"Pilier","equipo_id":{"$oid":"655a9a2239467e995a42cfc3"}}
+{"_id":{"$oid":"655a99fbea5edb60be0fa4ad"},"nombre":"Marcos Lopez","fecha_nacimiento":"2003-10-12","posicion":"Hooker","equipo_id":{"$oid":"655a9a4a39467e995a42cfc5"}}
+{"_id":{"$oid":"655a99fbea5edb60be0fa4ae"},"nombre":"Miguel Hernandez","fecha_nacimiento":"2010-08-24","posicion":"Pilier","equipo_id":{"$oid":"655a9a7839467e995a42cfc7"}}
+{"_id":{"$oid":"655a99fbea5edb60be0fa4af"},"nombre":"Jaime Spools","fecha_nacimiento":"2015-01-02","posicion":"Hooker","equipo_id":{"$oid":"655a9a8739467e995a42cfc8"}}
+{"_id":{"$oid":"655a99fbea5edb60be0fa4b0"},"nombre":"Pedro Suarez","fecha_nacimiento":"2012-12-08","posicion":"Pilier","equipo_id":{"$oid":"655a9a5e39467e995a42cfc6"}}
+{"_id":{"$oid":"655a99fbea5edb60be0fa4b1"},"nombre":"Julian Izquierdo","fecha_nacimiento":"2008-11-21","posicion":"Second","equipo_id":{"$oid":"655a9a3239467e995a42cfc4"}}
+
+Partidos
+
+{"_id":{"$oid":"655aa059ea5edb60be17f21d"},"fecha":"2023-07-15","hora":"16:00","equipo_local_id":{"$oid":"655a957cea5edb60be09be1c"},"equipo_visitante_id":{"$oid":"655a957cea5edb60be09be1d"},"lugar":"Estadio Nacional","arbitro_id":{"$oid":"655a9881ea5edb60be0dba4e"},"entrenadores":[{"$oid":"655a9697ea5edb60be0b2b05"},{"$oid":"655a971739467e995a42cfbf"}],"eventos":[{"minuto":{"$numberInt":"30"},"tipo":"Gol","equipo_id":{"$oid":"655a957cea5edb60be09be1c"}},{"minuto":{"$numberInt":"55"},"tipo":"Gol","equipo_id":{"$oid":"655a957cea5edb60be09be1c"}}]}
+{"_id":{"$oid":"655aa2beea5edb60be1b1071"},"fecha":"2023-07-20","hora":"20:00","equipo_local_id":{"$oid":"655a957cea5edb60be09be1d"},"equipo_visitante_id":{"$oid":"655a957cea5edb60be09be1e"},"lugar":"Estadio de techo","arbitro_id":{"$oid":"655a9881ea5edb60be0dba4f"},"entrenadores":[{"$oid":"655a971739467e995a42cfbf"},{"$oid":"655a975d39467e995a42cfc0"}],"eventos":[{"minuto":{"$numberInt":"12"},"tipo":"Gol","equipo_id":{"$oid":"655a957cea5edb60be09be1e"}},{"minuto":{"$numberInt":"21"},"tipo":"Gol","equipo_id":{"$oid":"655a957cea5edb60be09be1d"}},{"minuto":{"$numberInt":"33"},"tipo":"Gol","equipo_id":{"$oid":"655a957cea5edb60be09be1d"}}]}
+{"_id":{"$oid":"655aa563ea5edb60be1e9e93"},"fecha":"2023-07-15","hora":"16:00","equipo_local_id":{"$oid":"655a957cea5edb60be09be1f"},"equipo_visitante_id":{"$oid":"655a957cea5edb60be09be20"},"lugar":"Villa olimpica","arbitro_id":{"$oid":"655a9881ea5edb60be0dba4e"},"entrenadores":[{"$oid":"655a977f39467e995a42cfc1"},{"$oid":"655a979a39467e995a42cfc2"}],"eventos":[{"minuto":{"$numberInt":"5"},"tipo":"Gol","equipo_id":{"$oid":"655a957cea5edb60be09be1c"}},{"minuto":{"$numberInt":"10"},"tipo":"Gol","equipo_id":{"$oid":"655a957cea5edb60be09be1c"}}]}
+{"_id":{"$oid":"655aa587ea5edb60be1ed078"},"fecha":"2023-07-22","hora":"20:00","equipo_local_id":{"$oid":"655a957cea5edb60be09be1d"},"equipo_visitante_id":{"$oid":"655a957cea5edb60be09be1f"},"lugar":"Estadio de techo","arbitro_id":{"$oid":"655a9881ea5edb60be0dba50"},"entrenadores":[{"$oid":"655a971739467e995a42cfbf"},{"$oid":"655a977f39467e995a42cfc1"}],"eventos":[{"minuto":{"$numberInt":"12"},"tipo":"Gol","equipo_id":{"$oid":"655a957cea5edb60be09be1e"}}]}
+{"_id":{"$oid":"655aa59cea5edb60be1ef697"},"fecha":"2023-07-25","hora":"14:00","equipo_local_id":{"$oid":"655a957cea5edb60be09be1c"},"equipo_visitante_id":{"$oid":"655a957cea5edb60be09be20"},"lugar":"Villa olimpica","arbitro_id":{"$oid":"655a9881ea5edb60be0dba4f"},"entrenadores":[{"$oid":"655a9697ea5edb60be0b2b05"},{"$oid":"655a979a39467e995a42cfc2"}],"eventos":[{"minuto":{"$numberInt":"11"},"tipo":"Gol","equipo_id":{"$oid":"655a957cea5edb60be09be1c"}},{"minuto":{"$numberInt":"35"},"tipo":"Gol","equipo_id":{"$oid":"655a957cea5edb60be09be1c"}}]}
+
+
+
